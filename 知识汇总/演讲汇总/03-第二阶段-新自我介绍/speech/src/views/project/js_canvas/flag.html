@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红旗🚩</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .canvas {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            translate: -50% -50%;
+            border: 10px double white;
+        }
+
+
+        a {
+            position: absolute;
+            right: 50px;
+            top: 20px;
+
+            display: inline-block;
+
+        }
+
+        button {
+            font-size: 50px;
+            border-radius: 10px;
+            padding: 10px 20px;
+        }
+
+        button:hover {
+            cursor: pointer;
+            filter: brightness(0.8);
+        }
+    </style>
+</head>
+
+<body>
+    <a href="javascript:;" id="down"><button>下载</button></a>
+    <canvas id="canvas1" class="canvas" width="1000px" height="600px"></canvas>
+
+
+</body>
+
+</html>
+<script type="module">
+    import { redFlag, downloadCanvasImage } from '../utils/canvas/draw.js'
+    redFlag(canvas1.getContext('2d'), canvas1)
+    down.onclick = () => {
+        downloadCanvasImage(canvas1, '#down')
+    }
+</script>

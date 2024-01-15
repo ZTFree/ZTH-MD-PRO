@@ -1,0 +1,56 @@
+@keyframes rt {
+    from {}
+    to {
+        rotate: -360deg;
+    }
+}
+
+#taiji {
+    position: absolute;
+    left: 50%;
+    top: 450px;
+    translate: -50% -50%;
+    width: 0;
+    height: 0;
+    border: 300px solid;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(255, 255, 255);
+    animation: rt infinite 2s linear;
+    border-radius: 50%;
+}
+
+#bend_white {
+    position: absolute;
+    top: -44px;
+    left: -44px;
+    border: 150px solid white;
+    border-radius: 50%;
+}
+
+#bend_black {
+    position: absolute;
+    bottom: -44px;
+    right: -44px;
+    border: 150px solid black;
+    border-radius: 50%;
+}
+
+#ring_white {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    border: 40px solid white;
+    border-radius: 50%;
+}
+
+#ring_black {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    border: 40px solid black;
+    border-radius: 50%;
+}

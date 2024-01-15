@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>法阵🧙‍</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .canvas {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            translate: -50% -50%;
+            border: 10px double white;
+        }
+
+        #main {
+            position: relative;
+
+            border: 10px double white;
+            background-color: gray;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        a {
+            display: inline-block;
+
+        }
+
+        button {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main">
+        <canvas id="canvas1" class="canvas" width="400px" height="400px"></canvas>
+        <canvas id="canvas2" class="canvas" width="400px" height="400px"></canvas>
+    </div>
+
+</body>
+
+</html>
+<script src="../utils/canvas/draw2.js" type="module"></script>

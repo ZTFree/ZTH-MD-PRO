@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>番剧</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+
+        }
+
+        html {
+            background-color: gray;
+        }
+
+        #main {
+            width: 90%;
+            height: 100vh;
+            margin: 0 auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas:
+                "l1 r1  "
+                "l1 r1 ";
+            grid-gap: 25px 25px;
+
+        }
+
+        .b1 {
+            grid-area: l1;
+        }
+
+        .b3 {
+            grid-area: r1;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        h1 {
+            margin: 20px;
+            text-align: center;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>低纯度"二次元"</h1>
+    <div id="main">
+        <div class="b1">
+            <img src="./images/_2d01.png" alt="">
+        </div>
+        <div class="b3">
+            <img src="./images/_2d02.png" alt="">
+        </div>
+    </div>
+</body>
+
+</html>

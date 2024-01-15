@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>唱歌</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+
+        }
+
+        html {
+            background-color: gray;
+        }
+
+        #main {
+            width: 90%;
+            height: 100vh;
+            margin: 0 auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas:
+                "l1 r1  "
+                "l2 r1 ";
+            grid-gap: 25px 25px;
+
+        }
+
+
+        .b1 {
+            grid-area: l1;
+
+        }
+
+        .b2 {
+            grid-area: l2;
+        }
+
+        .b3 {
+            grid-area: r1;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        h1 {
+            margin: 20px;
+            text-align: center;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>康·公馆(天台+浴室)"歌神"</h1>
+    <div id="main">
+        <div class="b1">
+            <img src="./images/song01.png">
+        </div>
+        <div class="b2">
+            <img src="./images/song02.png">
+        </div>
+        <div class="b3">
+            <img src="./images/song03.png">
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一绿向北💚</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .ctrl {
+            display: block;
+            width: 600px;
+            /* width: 100%; */
+            margin: 0 auto;
+        }
+
+        .outerbox {
+            margin: 20px auto;
+            display: flex;
+            width: 600px;
+            flex-direction: column;
+            height: 500px;
+            overflow-y: scroll;
+            border: 10px solid black;
+            background-size: cover;
+            background-position: center;
+
+        }
+
+        .outerbox::-webkit-scrollbar {
+            visibility: hidden;
+            width: 0;
+        }
+
+        .innerbox {
+
+            padding: 0px;
+            background-color: rgba(128, 128, 128, 0.5)
+        }
+
+        .row {
+            margin: 5px 0;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 800;
+            color: rgb(9, 255, 5);
+        }
+
+        .active {
+            background-color: rgba(95, 244, 157, 0.5);
+            color: rgb(255, 0, 0);
+        }
+
+        .title {
+            text-align: center;
+            margin-top: 20px;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1 class="title"></h1>
+        <div class="outerbox">
+            <div class="innerbox"></div>
+        </div>
+        <audio src="./audios/ylxb.mp3" controls class="ctrl" autoplay></audio>
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+    const title = document.querySelector('.title')
+    const ctrl = document.querySelector('.ctrl')
+    const outerbox = document.querySelector('.outerbox')
+    const innerbox = document.querySelector('.innerbox')
+
+    const fullStr = `
+[00:00.00]周杰伦 - 一路向北
+[00:18.04]作词：方文山
+[00:24.95]作曲：周杰伦
+[00:31.32]编曲：蔡科俊
+[00:36.07]後视镜里的世界
+[00:43.13]越来越远的道别
+[00:47.74]你转身向背
+[00:50.79]侧脸还是很美
+[00:54.34]我用眼光去追
+[00:57.92]竟听见你的泪
+[01:04.57]在车窗外面排徊
+[01:11.77]是我错失的机会
+[01:16.28]你站的方位
+[01:18.84]跟我中间隔著泪
+[01:22.39]街景一直在後退
+[01:26.08]你的崩溃在窗外零碎
+[01:30.16]我一路向北
+[01:33.02]离开有你的季节
+[01:37.70]你说你好累
+[01:40.26]已无法再爱上谁
+[01:44.51]风在山路吹
+[01:47.05]过往的画面全都是我不对
+[01:52.51]细数惭愧
+[01:54.68]我伤你几回
+[02:04.27]
+[02:10.46]
+[02:19.58]後视镜里的世界
+[02:26.79]越来越远的道别
+[02:31.30]你转身向背
+[02:34.52]侧脸还是很美
+[02:37.95]我用眼光去追
+[02:41.58]竟听见你的泪
+[02:48.19]在车窗外面排徊
+[02:55.28]是我错失的机会
+[03:00.43]你站的方位
+[03:02.38]跟我中间隔著泪
+[03:05.86]街景一直在後退
+[03:09.55]你的崩溃在窗外零碎
+[03:13.95]我一路向北
+[03:16.71]离开有你的季节
+[03:21.10]你说你好累
+[03:23.85]已无法再爱上谁
+[03:28.40]风在山路吹
+[03:31.08]过往的画面全都是我不对
+[03:36.31]细数惭愧
+[03:38.42]我伤你几回
+[03:42.81]我一路向北
+[03:45.38]离开有你的季节
+[03:49.96]方向盘周围
+[03:52.74]回转著我的後悔
+[03:57.86]我加速超越
+[03:59.80]却甩不掉紧紧跟随的伤悲
+[04:05.08]细数惭愧
+[04:07.25]我伤你几回
+[04:12.63]停止狼狈
+[04:14.37]就让错纯粹
+[04:22.82]`
+
+    const wordsArr = []
+    const timesArr = []
+    const rowsArr = []
+
+    const bgRootUrl = './images'
+    const bgUrlArr = ['bg00.jpg', 'bg01.jpg', 'bg02.jpg', 'bg03.jpg']
+
+    let bgIndex = 0
+
+
+    let rollTimer;
+    let isRolling = false
+
+
+
+    // 初始化数组数据
+    function initArr() {
+        fullStr.split('\n').forEach(v => {
+            if (!v) return
+            const timeStr = (v.match(/\[.*\]/))[0]
+            const m = parseInt(timeStr.slice(1, 3)),
+                s = parseInt(timeStr.slice(4, 6)),
+                ws = parseInt(timeStr.slice(7, 9))
+            const time = m * 60 + s + ws / 100
+            timesArr.push(time)
+
+            const wordStr = v.replace(timeStr, '')
+            wordsArr.push(wordStr)
+
+        })
+
+        wordsArr.forEach((v, i) => {
+            const row = document.createElement('div')
+            row.classList.add('row')
+            row.innerText = v
+            rowsArr.push(row)
+            innerbox.appendChild(row)
+        })
+    }
+
+    // 点击进度条激活行
+    function setRowActiveByTime() {
+        const curTime = ctrl.currentTime
+        if (curTime <= 0) return
+        timesArr.some((v, i) => {
+
+            if (curTime <= v) {
+                doRowActive(i - 1)
+                return true
+            }
+            else if (curTime > timesArr[timesArr.length - 1]) {
+                doRowActive(timesArr.length - 1)
+                return true
+            }
+        })
+    }
+
+    // 自动切换背景
+    function setAutoBackground() {
+        setInterval(() => {
+            bgIndex = bgIndex + 1 >= bgUrlArr.length ? 0 : bgIndex + 1
+            outerbox.style.backgroundImage = `url(${bgRootUrl + '/' + bgUrlArr[bgIndex]})`
+        }, 5000);
+    }
+
+    // 歌词自动跳转激活
+    function setAutoTimer() {
+        setInterval(() => {
+            setRowActiveByTime()
+        }, 10)
+    }
+
+    // 跳转+激活样式
+    function doRowActive(index) {
+        rowJump(index)
+        setActiveStyle(index)
+    }
+
+    // 滚动条跳转
+    function rowJump(index) {
+        if (isRolling) return
+        const curRow = rowsArr[index]
+        outerbox.scrollTo(0, curRow.offsetTop - outerbox.clientHeight / 2 - curRow.clientHeight / 2 + 50)
+    }
+
+    // 设置播放器时间进度
+    function setPlayerTime(time) {
+        ctrl.currentTime = time
+    }
+
+    // 激活样式
+    function setActiveStyle(index) {
+        const curRow = rowsArr[index]
+        rowsArr.forEach(v => {
+            v.classList.remove('active')
+        })
+        curRow.classList.add('active')
+    }
+
+    function init() {
+        initArr()
+        setAutoTimer()
+        setAutoBackground()
+
+        title.innerText = '一路向北'
+        outerbox.style.backgroundImage = `url(${bgRootUrl + '/' + bgUrlArr[bgIndex]})`
+
+        // 绑定播放器进度点击事件
+        ctrl.addEventListener('seeked', (e) => {
+            setRowActiveByTime()
+        })
+
+        // 绑定歌词滚动查看事件
+        outerbox.addEventListener('wheel', (e) => {
+            isRolling = true
+            clearTimeout(rollTimer)
+            rollTimer = setTimeout(() => {
+                isRolling = false
+            }, 1000);
+        })
+
+        // 绑定歌词点击跳转事件
+        innerbox.addEventListener('click', ({ target }) => {
+            if (target.classList.contains('row')) {
+                const index = rowsArr.indexOf(target)
+                setPlayerTime(timesArr[index])
+            }
+        })
+    }
+    init()
+
+
+
+</script>

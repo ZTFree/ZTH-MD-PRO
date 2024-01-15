@@ -1,0 +1,158 @@
+@keyframes textMove {
+    form {
+        left: 0;
+    }
+    to {
+        left: -3000px;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: 楷体 !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    position: relative;
+    height: 100vh;
+}
+
+#aside {
+    position: absolute;
+    left: -280px;
+    top: 0;
+    width: 300px;
+    background-color: red;
+    transition: all 0.5s ease-in 0s;
+    z-index: 1000;
+}
+
+#aside:hover {
+    left: 0;
+}
+
+#aside * {
+    text-align: center;
+}
+
+#aside h1 {
+    height: 50px;
+    line-height: 50px;
+    background-color: #7a0000;
+    color: #ffe9a7;
+}
+
+[id^="link"] {
+    height: 40px;
+    width: 100%;
+    line-height: 40px;
+    background-color: #f78e3d;
+    color: #fff3cf;
+    font-weight: 800;
+}
+
+[id^="link"]:hover {
+    color: red;
+    background-color: #fff3cf;
+}
+
+#main {
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    font-size: 200px;
+    line-height: 100vh;
+    color: #f04134;
+}
+
+#top_text {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    translate: -50% -50%;
+    width: 700px;
+    height: 120px;
+    border: 10px double black;
+    font-size: 100px;
+    line-height: 100px;
+    color: black;
+    background-color: transparent;
+    z-index: 2000;
+    overflow: hidden;
+}
+
+#top_text span {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3000px;
+    height: 120px;
+    line-height: 100px;
+    animation-name: textMove;
+    animation-duration: 12s;
+    animation-timing-function: linear;
+    animation-fill-mode: backwards;
+    animation-iteration-count: infinite;
+}
+
+[id^="box"] {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(#ffbf00, #fff, #ffbf00);
+}
+
+.s-left,
+.s-right {
+    position: absolute;
+    max-width: 1em;
+    top: 500px;
+    font-size: 100px;
+    line-height: 100px;
+    translate: -50% -50%;
+    /* anim */
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+}
+
+.s-mid {
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-delay: 2s;
+}
+
+.s-left {
+    left: 22%;
+    rotate: -20deg;
+    animation-delay: 0;
+}
+
+.s-right {
+    left: 78%;
+    rotate: 20deg;
+    animation-delay: 1s;
+}
+
+#music_box {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+}
+
+#myName {
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-delay: 1s;
+}
