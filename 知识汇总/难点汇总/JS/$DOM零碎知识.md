@@ -1,0 +1,2 @@
+- Node.nextSibling：同级相邻的下一个元素
+- Node.previousSibling：同级相邻的上一个元素

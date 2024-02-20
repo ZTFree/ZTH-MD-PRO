@@ -189,7 +189,20 @@ let a:object&Array<number> = [1,2,3]
 function fn(a:number|string){
     return (a as string).toUpperCase()
 }
+
+// 断言为常量类型
+let a  = 10 as const
 ```
+
+
+
+## 非空断言
+
+```ts
+// 类型不为null与undefined
+```
+
+
 
 ---
 
@@ -271,6 +284,8 @@ console.log(X[0]) // ==> 'a'
 type A = number | string
 let a:A = 1
 a = 's'
+
+type fn = ()=>number
 ```
 
 #### type语句中extends的用法
@@ -282,6 +297,16 @@ type A = a extends number ? boolear:string
 ```
 
 ---
+
+
+
+## 类型工具
+
+```ts
+type p1 = Readonly<p>
+
+// Readonlu、Partial、Pick、Omit、record
+```
 
 
 
